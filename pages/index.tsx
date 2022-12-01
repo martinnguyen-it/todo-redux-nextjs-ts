@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { Provider } from 'react-redux';
-import TodoSections from './components/todo/TodoSections';
-import TodoHeader from './components/todo/TodoHeader';
-import store from './components/redux/store';
+import TodoSections from '../components/todo/TodoSections';
+import TodoHeader from '../components/todo/TodoHeader';
+import {store} from '../components/redux/store';
 
 export default function Home() {
   return (

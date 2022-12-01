@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { memo } from "react";
 import axios from "axios";
 import todoListSlice from '../redux/todosSlice';
-import interfaceTodo from "../interface/interfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 
 const AddTodo = () => {
     const [todo, setTodo] = useState('');

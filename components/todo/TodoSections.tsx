@@ -4,7 +4,7 @@ import AddTodo from "./AddTodo";
 import ShowTodo from "./ShowTodo";
 import getDataApi from "../redux/api/getDataApi"
 import type { RootState } from "../redux/store";
-import interfaceTodo from "../interface/interfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 import todoListSlice from "../redux/todosSlice"
 
 const TodoSections = () => {

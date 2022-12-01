@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import interfaceTodo from "../interface/interfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 import deleteDataApi from "./api/deleteDataApi";
 import updateDataApi from "./api/updateDataApi";
 
@@ -21,12 +21,12 @@ export default createSlice({
             const currentTodo = state.todoListState.find(todo => todo.id === action.payload);
             if (currentTodo) {
                 currentTodo.isCompleted = !currentTodo.isCompleted;
-                // updateDataApi(action.payload, currentTodo.isCompleted);
+                updateDataApi(action.payload, currentTodo.isCompleted);
             }
         },
         handleTodoDelete: (state, action) => {
             state.todoListState = state.todoListState.filter((todo) => todo.id !== action.payload);
-            // deleteDataApi(action.payload)
+            deleteDataApi(action.payload)
         }
     }
 })

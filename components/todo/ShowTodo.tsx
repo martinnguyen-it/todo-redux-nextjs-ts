@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react"
 import { useDispatch } from 'react-redux';
 import todoListSlice from '../redux/todosSlice';
-import interfaceTodo from "../interface/interfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 
 const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
     const dispatch = useDispatch();
