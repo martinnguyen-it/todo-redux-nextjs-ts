@@ -7,7 +7,7 @@ import interfaceTodo from "../interface/interfaceTodo"
 
 const AddTodo = () => {
     const [todo, setTodo] = useState('');
-    // const nameRef = useRef<HTMLHeadingElement>(null);
+    const nameRef = useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
 
     const handleAddTodo = useCallback(() => {
@@ -29,7 +29,7 @@ const AddTodo = () => {
           );
         })
         setTodo('');
-        // nameRef.current.focus();
+        nameRef.current?.focus();
       }, [dispatch, todo])
 
     const handleEnter = useCallback((e : React.KeyboardEvent<HTMLInputElement>) => {
@@ -46,7 +46,7 @@ const AddTodo = () => {
         <input 
           className="flex-1 px-2.5 bg-gray-200 placeholder-gray-500 focus:outline-none" 
           placeholder="Add task..." 
-          // ref={nameRef}
+          ref={nameRef}
           value={todo} 
           onKeyDown={handleEnter}
           onChange={handleChangeTodo} />
