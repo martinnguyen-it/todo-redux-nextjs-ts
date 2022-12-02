@@ -12,12 +12,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #D1D5DB;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
