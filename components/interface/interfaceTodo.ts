@@ -1,5 +1,5 @@
 export interface interfaceTodo {
-    id: string;
-    name: string;
-    isCompleted: boolean;
+    id?: string;
+    name?: string;
+    isCompleted?: boolean;
 }

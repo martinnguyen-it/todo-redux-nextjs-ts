@@ -1,35 +1,20 @@
 import React, { useCallback, useRef, useState } from "react";
-import { useDispatch } from 'react-redux';
 import { memo } from "react";
-import axios from "axios";
-import todoListSlice from '../redux/todosSlice';
-import {interfaceTodo} from "../interface/interfaceTodo"
+import { useAppDispatch } from "../redux/hook";
+import addDataApi from "../redux/api/addDataApi";
 
 const AddTodo = () => {
     const [todo, setTodo] = useState('');
     const nameRef = useRef<HTMLInputElement>(null);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const handleAddTodo = useCallback(() => {
       if (todo === "") {
         return; 
       }
-      axios.post('https://638026512f8f56e28e9c895b.mockapi.io/martin', {
-        name: todo,
-        isCompleted: false,
-      })
-      .then(response => response.data)
-      .then((data : interfaceTodo) => {
-        dispatch(
-            todoListSlice.actions.addTodo({
-              name: data.name,
-              isCompleted: data.isCompleted,
-              id: data.id,
-            })
-          );
-        })
-        setTodo('');
-        nameRef.current?.focus();
+      dispatch(addDataApi(todo));
+      setTodo('');
+      nameRef.current?.focus();
       }, [dispatch, todo])
 
     const handleEnter = useCallback((e : React.KeyboardEvent<HTMLInputElement>) => {

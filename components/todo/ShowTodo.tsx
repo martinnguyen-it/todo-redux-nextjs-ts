@@ -1,19 +1,26 @@
 import { memo, useCallback, useState } from "react"
-import { useDispatch } from 'react-redux';
 import todoListSlice from '../redux/todosSlice';
 import {interfaceTodo} from "../interface/interfaceTodo"
+import updateDataApi from "../redux/api/updateDataApi";
+import deleteDataApi from "../redux/api/deleteDataApi";
+import { useAppDispatch } from "../redux/hook";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const [checked, setChecked] = useState(isCompleted);
     const handleCheck = useCallback(() => {
         setChecked(!checked);
-        dispatch(todoListSlice.actions.handleTodoCheck(id));
+        const todo = {
+            id: id,
+            isCompleted: checked
+        }
+        dispatch(updateDataApi(todo));
     }, [checked, id]);
 
     const handleDelete = useCallback(() => {
-        dispatch(todoListSlice.actions.handleTodoDelete(id));
+        dispatch(deleteDataApi(id));
     }, [])
 
     let textDecorationClass = isCompleted

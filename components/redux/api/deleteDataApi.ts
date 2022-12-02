@@ -1,7 +1,13 @@
 import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { interfaceTodo } from "../../interface/interfaceTodo";
 
-const deleteDataApi = (id : string) => {
-    axios.delete(`https://638026512f8f56e28e9c895b.mockapi.io/martin/${id}`)
-}
+const deleteDataApi = createAsyncThunk(
+  'todo/deleteDataApi',
+    async (id : string) => {
+        const response = axios.delete(`https://638026512f8f56e28e9c895b.mockapi.io/martin/${id}`)
+        return (await (await response).data) as interfaceTodo
+  }
+)
 
 export default deleteDataApi

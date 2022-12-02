@@ -1,23 +1,20 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import AddTodo from "./AddTodo";
 import ShowTodo from "./ShowTodo";
-import getDataApi from "../redux/api/getDataApi"
 import type { RootState } from "../redux/store";
 import {interfaceTodo} from "../interface/interfaceTodo"
-import todoListSlice from "../redux/todosSlice"
+import getDataApi from "../redux/api/getDataApi";
+import { useAppDispatch } from "../redux/hook";
+
 
 const TodoSections = () => {
-  const dispatch = useDispatch();
   const todoList = useSelector((state: RootState) => state.todoList.todoListState);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getDataApi().then((data : interfaceTodo[]) => {
-      dispatch(
-        todoListSlice.actions.setInitialState(data)
-      );
-      });
-  }, [])
+    dispatch(getDataApi());
+  }, [dispatch])
 
   var completed = todoList.filter((value : interfaceTodo) => value.isCompleted === true).length;
 
