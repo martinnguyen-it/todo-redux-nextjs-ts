@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { InterfaceTodo } from "../../interface/InterfaceTodo";
+import { interfaceTodo } from "../../interface/interfaceTodo";
 
 const addDataApi = createAsyncThunk(
   'todo/addDataApi',
@@ -9,7 +9,7 @@ const addDataApi = createAsyncThunk(
             name: todo,
             isCompleted: false,
         })
-        return (await response.data) as InterfaceTodo
+        return (await response.data) as interfaceTodo
   }
 )
 

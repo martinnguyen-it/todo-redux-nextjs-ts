@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import AddTodo from "./AddTodo";
 import ShowTodo from "./ShowTodo";
 import type { RootState } from "../redux/store";
-import {InterfaceTodo} from "../interface/InterfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 import getDataApi from "../redux/api/getDataApi";
 import { useAppDispatch } from "../redux/hook";
 
@@ -16,7 +16,7 @@ const TodoSections = () => {
     dispatch(getDataApi());
   }, [dispatch])
 
-  const completed = todoList.filter((value : InterfaceTodo) => value.isCompleted === true).length;
+  const completed = todoList.filter((value : interfaceTodo) => value.isCompleted === true).length;
   const countTodo = todoList.length;
   return (
     <>

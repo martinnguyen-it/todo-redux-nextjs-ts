@@ -1,10 +1,10 @@
 import { memo, useCallback, useState } from "react"
-import {InterfaceTodo} from "../interface/InterfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 import updateDataApi from "../redux/api/updateDataApi";
 import deleteDataApi from "../redux/api/deleteDataApi";
 import { useAppDispatch } from "../redux/hook";
 
-const ShowTodo = ({id, name , isCompleted} : InterfaceTodo) => {
+const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
     const [checked, setChecked] = useState(true);
     const [deleted, setDeleted] = useState(true);
 

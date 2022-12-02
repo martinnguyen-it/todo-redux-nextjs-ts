@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {InterfaceTodo} from "../interface/InterfaceTodo"
+import {interfaceTodo} from "../interface/interfaceTodo"
 import deleteDataApi from "./api/deleteDataApi";
 import updateDataApi from "./api/updateDataApi";
 import addDataApi from "./api/addDataApi";
 import getDataApi from "./api/getDataApi";
 
-const todoListState: InterfaceTodo[] = [];
+const todoListState: interfaceTodo[] = [];
 
 export default createSlice({
     name: 'todoList',
