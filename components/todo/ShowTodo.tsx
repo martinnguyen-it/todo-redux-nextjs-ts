@@ -20,7 +20,10 @@ const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
     }, [checked, id]);
 
     const handleDelete = useCallback(() => {
-        dispatch(deleteDataApi(id));
+        const todo = {
+            id: id
+        }
+        dispatch(deleteDataApi(todo));
     }, [])
 
     let textDecorationClass = isCompleted

@@ -4,8 +4,8 @@ import { interfaceTodo } from "../../interface/interfaceTodo";
 
 const deleteDataApi = createAsyncThunk(
   'todo/deleteDataApi',
-    async (id : string) => {
-        const response = axios.delete(`https://638026512f8f56e28e9c895b.mockapi.io/martin/${id}`)
+    async (todo : interfaceTodo) => {
+        const response = axios.delete(`https://638026512f8f56e28e9c895b.mockapi.io/martin/${todo.id}`)
         return (await (await response).data) as interfaceTodo
   }
 )
