@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {interfaceTodo} from "../interface/interfaceTodo"
+import {InterfaceTodo} from "../interface/InterfaceTodo"
 import deleteDataApi from "./api/deleteDataApi";
 import updateDataApi from "./api/updateDataApi";
 import addDataApi from "./api/addDataApi";
 import getDataApi from "./api/getDataApi";
 
-const todoListState: interfaceTodo[] = [];
+const todoListState: InterfaceTodo[] = [];
 
 export default createSlice({
     name: 'todoList',
@@ -18,7 +18,7 @@ export default createSlice({
         builder
             .addCase(getDataApi.pending, (state, action) => { })
             .addCase(getDataApi.fulfilled, (state, action) => { 
-                void(state.todoListState = action.payload)
+                state.todoListState = action.payload
             })
         builder
             .addCase(addDataApi.pending, (state, action) => { })
