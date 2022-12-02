@@ -1,7 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import { memo } from "react";
 import { useAppDispatch } from "../redux/hook";
-import addDataApi from "../redux/api/addDataApi";
+import {addDataApi} from "../redux/api/dataApi";
 
 const AddTodo = () => {
     const [todo, setTodo] = useState('');

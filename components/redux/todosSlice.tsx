@@ -1,9 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {interfaceTodo} from "../interface/interfaceTodo"
-import deleteDataApi from "./api/deleteDataApi";
-import updateDataApi from "./api/updateDataApi";
-import addDataApi from "./api/addDataApi";
-import getDataApi from "./api/getDataApi";
+import * as api from "./api/dataApi";
+
 
 const todoListState: interfaceTodo[] = [];
 
@@ -16,26 +14,26 @@ export default createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getDataApi.pending, (state, action) => { })
-            .addCase(getDataApi.fulfilled, (state, action) => { 
+            .addCase(api.getDataApi.pending, (state, action) => { })
+            .addCase(api.getDataApi.fulfilled, (state, action) => { 
                 state.todoListState = action.payload
             })
         builder
-            .addCase(addDataApi.pending, (state, action) => { })
-            .addCase(addDataApi.fulfilled, (state, action) => { 
+            .addCase(api.addDataApi.pending, (state, action) => { })
+            .addCase(api.addDataApi.fulfilled, (state, action) => { 
                 state.todoListState.push(action.payload)
              })
         builder
-            .addCase(updateDataApi.pending, (state, action) => { })
-            .addCase(updateDataApi.fulfilled, (state, action) => { 
+            .addCase(api.updateDataApi.pending, (state, action) => { })
+            .addCase(api.updateDataApi.fulfilled, (state, action) => { 
                 const currentTodo = state.todoListState.find(todo => todo.id === action.payload.id);
                 if (currentTodo) {
                     currentTodo.isCompleted = !currentTodo.isCompleted;
                 }
             })
         builder
-            .addCase(deleteDataApi.pending, (state, action) => { })
-            .addCase(deleteDataApi.fulfilled, (state, action) => { 
+            .addCase(api.deleteDataApi.pending, (state, action) => { })
+            .addCase(api.deleteDataApi.fulfilled, (state, action) => { 
                 state.todoListState = state.todoListState.filter((todo) => todo.id !== action.payload.id);
             })
     }

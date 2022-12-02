@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react"
 import {interfaceTodo} from "../interface/interfaceTodo"
-import updateDataApi from "../redux/api/updateDataApi";
-import deleteDataApi from "../redux/api/deleteDataApi";
+import {updateDataApi} from "../redux/api/dataApi";
+import {deleteDataApi} from "../redux/api/dataApi";
 import { useAppDispatch } from "../redux/hook";
 
 const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
@@ -15,7 +15,7 @@ const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
             id: id,
             isCompleted: !isCompleted
         }
-        await setChecked(false)
+        await setChecked(false);
         await dispatch(updateDataApi(todo));
         await setChecked(true)
     }, [id, isCompleted, dispatch]);
@@ -40,7 +40,7 @@ const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
         <li className={`flex justify-between py-2.5 px-2.5 border-b border-gray-300 ${textDecorationClass} ${textColorClass}`} key={id}>
             {checked ? <input className="cursor-pointer" id={id} checked={isCompleted} onClick={handleCheck} type="checkbox" /> : <input className="cursor-pointer" disabled type="checkbox" />}
             <label htmlFor={id} className="flex-1 px-2 min-w-0 break-words cursor-pointer">{name}</label>
-            {deleted ? <button className='text-gray-400 hover:text-pink-500 focus:outline-none' onClick={handleDelete}><i className="fa-solid fa-trash-can"></i></button> : <button className='text-pink-500 focus:outline-none'><i className="fa-solid fa-trash-can"></i></button> }
+            {deleted ? <button className='text-gray-400 hover:text-pink-500 focus:outline-none' onClick={handleDelete}><i className="fa-solid fa-trash-can"></i></button> : <button className='text-blue-500 focus:outline-none'><i className="fa-solid fa-trash-can"></i></button> }
         </li>
     )
 }

@@ -4,7 +4,7 @@ import AddTodo from "./AddTodo";
 import ShowTodo from "./ShowTodo";
 import type { RootState } from "../redux/store";
 import {interfaceTodo} from "../interface/interfaceTodo"
-import getDataApi from "../redux/api/getDataApi";
+import {getDataApi} from "../redux/api/dataApi";
 import { useAppDispatch } from "../redux/hook";
 
 
