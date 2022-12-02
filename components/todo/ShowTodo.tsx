@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react"
 import {interfaceTodo} from "../interface/interfaceTodo"
-import {updateDataApi} from "../redux/api/dataApi";
-import {deleteDataApi} from "../redux/api/dataApi";
+import {updateDataApi} from "../redux/todosSlice";
+import {deleteDataApi} from "../redux/todosSlice";
 import { useAppDispatch } from "../redux/hook";
 
 const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
@@ -11,7 +11,7 @@ const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
     const dispatch = useAppDispatch();
 
     const handleCheck = useCallback(async () => {
-        const todo = {
+        const todo : interfaceTodo = {
             id: id,
             isCompleted: !isCompleted
         }
@@ -21,7 +21,7 @@ const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
     }, [id, isCompleted, dispatch]);
 
     const handleDelete = useCallback(async () => {
-        const todo = {
+        const todo : interfaceTodo = {
             id: id
         }
         await setDeleted(false)

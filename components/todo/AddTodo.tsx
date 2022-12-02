@@ -1,7 +1,8 @@
 import React, { useCallback, useRef, useState } from "react";
 import { memo } from "react";
 import { useAppDispatch } from "../redux/hook";
-import {addDataApi} from "../redux/api/dataApi";
+import {addDataApi} from "../redux/todosSlice";
+import { interfaceTodo } from "../interface/interfaceTodo";
 
 const AddTodo = () => {
     const [todo, setTodo] = useState('');
@@ -12,7 +13,11 @@ const AddTodo = () => {
       if (todo === "") {
         return; 
       }
-      dispatch(addDataApi(todo));
+      const todoState : interfaceTodo = {
+        name: todo,
+        isCompleted: false
+      }
+      dispatch(addDataApi(todoState));
       setTodo('');
       nameRef.current?.focus();
       }, [dispatch, todo])
