@@ -9,15 +9,13 @@ import { unwrapResult } from "@reduxjs/toolkit";
 const ShowTodo = ({id, name , isCompleted} : interfaceTodo) => {
     const dispatch = useAppDispatch();
 
-    const [checked, setChecked] = useState(isCompleted);
     const handleCheck = useCallback(() => {
-        setChecked(!checked);
         const todo = {
             id: id,
-            isCompleted: checked
+            isCompleted: !isCompleted
         }
         dispatch(updateDataApi(todo));
-    }, [checked, id]);
+    }, [isCompleted, id]);
 
     const handleDelete = useCallback(() => {
         const todo = {
